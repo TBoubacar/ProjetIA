@@ -11,6 +11,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
+import but.But;
+import rules.Rule;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -85,41 +88,6 @@ public class Test extends JFrame implements Observable, Observer {
 				notifyObserver();
 			}
 		});
-	}
-	
-	public static void main(String[] args) throws UnsupportedLookAndFeelException {
-		Test test = new Test();
-
-		JPanel jPanelQuestion = new JPanel(new GridLayout(2,1));
-		JPanel jPanelQ1 = new JPanel(new GridLayout(2,1));
-		JPanel jPanelQ2 = new JPanel(new GridLayout(2,1));
-		
-		JLabel jLabelQ1 = new JLabel("Veuillez choisir la ville à visiter : ", JLabel.CENTER);
-		JLabel jLabelQ2 = new JLabel("Quel est votre budjet (en Euros) : ", JLabel.CENTER);
-
-		jLabelQ1.setFont(new Font("Serif", Font.BOLD, 20));
-		jLabelQ2.setFont(new Font("Serif", Font.BOLD, 20));
-		
-		jPanelQ1.add(jLabelQ1);
-		jPanelQ1.add(jListVille);
-		
-		jPanelQ2.add(jLabelQ2);
-		jPanelQ2.add(jListBudget);
-		
-		jPanelQuestion.add(jPanelQ1);
-		jPanelQuestion.add(jPanelQ2);
-		
-		jtextField.setText("Visitable : " + decision.make_decision((String)jListVille.getSelectedItem(),(String)jListBudget.getSelectedItem()));
-		JScrollPane jScrollPane = new JScrollPane(jTextArea);
-		JPanel panelText = new JPanel(new GridLayout(2,1));
-		
-		panelText.add(jtextField);
-		panelText.add(jScrollPane);
-
-		test.add(jPanelQuestion);
-		test.add(panelText);
-		UIManager.setLookAndFeel( new NimbusLookAndFeel() );
-		test.setVisible( true );
 	}
 
 	@Override
@@ -214,5 +182,64 @@ public class Test extends JFrame implements Observable, Observer {
 	public void removeObserver(Observer observer) {
 		this.observers.remove(observer);		
 	}
+
+	/*____________________________________________________PROGRAMME PRINCIPAL__________________________________________________________*/
+	
+	public static void main(String[] args) throws UnsupportedLookAndFeelException {
+		Test test = new Test();
+		/*------------------------TEST POUR LE CHAINAGE AVANT------------------------*/
+		System.out.println("------------------------TEST POUR LE CHAINAGE AVANT------------------------\n"
+				+ "\t**************VOIR SUR L'INTERFACE GRAPHIQUE**************\n"
+				+ "\t \t \t \t(^_^)");
+		JPanel jPanelQuestion = new JPanel(new GridLayout(2,1));
+		JPanel jPanelQ1 = new JPanel(new GridLayout(2,1));
+		JPanel jPanelQ2 = new JPanel(new GridLayout(2,1));
+		
+		JLabel jLabelQ1 = new JLabel("Veuillez choisir la ville à visiter : ", JLabel.CENTER);
+		JLabel jLabelQ2 = new JLabel("Quel est votre budjet (en Euros) : ", JLabel.CENTER);
+
+		jLabelQ1.setFont(new Font("Serif", Font.BOLD, 20));
+		jLabelQ2.setFont(new Font("Serif", Font.BOLD, 20));
+		
+		jPanelQ1.add(jLabelQ1);
+		jPanelQ1.add(jListVille);
+		
+		jPanelQ2.add(jLabelQ2);
+		jPanelQ2.add(jListBudget);
+		
+		jPanelQuestion.add(jPanelQ1);
+		jPanelQuestion.add(jPanelQ2);
+		
+		jtextField.setText("Visitable : " + decision.make_decision((String)jListVille.getSelectedItem(),(String)jListBudget.getSelectedItem()));
+		JScrollPane jScrollPane = new JScrollPane(jTextArea);
+		JPanel panelText = new JPanel(new GridLayout(2,1));
+		
+		panelText.add(jtextField);
+		panelText.add(jScrollPane);
+
+		test.add(jPanelQuestion);
+		test.add(panelText);
+		UIManager.setLookAndFeel( new NimbusLookAndFeel() );
+		test.setVisible( true );
+		
+		/*------------------------TEST POUR LE CHAINAGE ARRIÈRE------------------------*/
+		System.out.println("\n------------------------TEST POUR LE CHAINAGE ARRIÈRE------------------------\n"
+				+ "\t********ENSEMBLE DES REGLES ET CONDITIONS LUS POUR OBTENIR UN RESULTAT********\n"
+				+ "# Règles : ");
+		
+		for(Rule r : decision.chainageArriere(new But("visiter","yes"))) {
+			System.out.println(r);
+		}
+		System.out.println("# Conditions : ");
+		decision.printRulesTable();
+		System.out.println("\n\n_____________________FIN DE NOTRE ALGO DE SYSTÈME EXPERT_____________________\n"
+				+ "DÉVELOPPEUR : SYLLA Mohamed ET TOURE Boubacar\n"
+				+ "UNIVERSITÉ DE SCIENCE D'ANGERS (INFORMATIQUE)\n"
+				+ "DATE : 16/12/2021 À 07 H 58 MIN\n"
+				+ "MATIÈRE : INTELLIGENCE ARTIFICIELLE\n"
+				+ "\t PROJET DISPONIBLE SUR NOTRE COMPTE GITHUB.\n");
+	}
+	
+	
 
 }

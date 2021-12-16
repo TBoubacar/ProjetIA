@@ -1,14 +1,15 @@
-package facts;
+package but;
 
-public class Facts {
-	String etiquette;
-	String valeur;
+public class But {
+
+	private String etiquette;
+	private String valeur;
 	
-	public Facts(String etiquette,String valeur) {
-		this.etiquette=etiquette;
-		this.valeur = valeur;
+	public But(String etiq,String val) {
+		this.etiquette = etiq;
+		this.valeur= val;
 	}
-	
+
 	public String getEtiquette() {
 		return etiquette;
 	}
@@ -24,5 +25,5 @@ public class Facts {
 	public void setValeur(String valeur) {
 		this.valeur = valeur;
 	}
-
+	
 }

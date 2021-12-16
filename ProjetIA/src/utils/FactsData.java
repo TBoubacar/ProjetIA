@@ -15,7 +15,7 @@ public class FactsData {
 		faitsFiltrer = new ArrayList<>();
 	}
 
-	public  ArrayList<Facts> generateFacts() {
+	public ArrayList<Facts> generateFacts() {
 		arrayfacts.clear();
 		faitsFiltrer.clear();
 		

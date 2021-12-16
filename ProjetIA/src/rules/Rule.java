@@ -13,33 +13,31 @@ public class Rule {
 	public Rule(String rule) {
 		this.ruleNumber = rule;
 		this.conditions = new ArrayList<Condition>();
-		this.isconditionsverified = new ArrayList<>();	
+		this.isconditionsverified = new ArrayList<Boolean>();	
 		this.action=new Action("","");
 	}
 	
+	public String toString() {
+		return "Règle n°" + this.ruleNumber;
+	}
 	
 	public void addCondition(Condition C) {
 		conditions.add(C);
 	}
 	
 	public void addaction (Action action) {
-		this.action =action;
+		this.action = action;
 	}
 	
 	
 	public void trouveCondition(FactsData data) {
 		
-		
-		
 			for(Condition condition : conditions) {
 				for(Facts f :data.getArrayfacts())
 			if((condition.name ==f.getEtiquette()) && (condition.value==f.getValeur())) {
-			
-				System.out.println("toto");
 				isconditionsverified.add(true);
 				break;
-			}
-			
+			}			
 			
 		}
 		isconditionsverified.add(false);
