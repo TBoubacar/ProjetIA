@@ -64,25 +64,21 @@ public class RulesData {
 		
 		
 		Rule rule6 = new Rule("6");
-		rule6.addCondition(new Condition("ville","yes"));
 		rule6.addCondition(new Condition("destination", "Angers"));
 		rule6.addaction(new Action("taille", "petite"));
 		rules.add(rule6);
 		
 		Rule rule7 = new Rule("7");
-		rule7.addCondition(new Condition("ville","yes"));
 		rule7.addCondition(new Condition("destination", "Nantes"));
 		rule7.addaction(new Action("taille", "moyenne"));
 		rules.add(rule7);
 		
 		Rule rule8 = new Rule("8");
-		rule8.addCondition(new Condition("ville","yes"));
 		rule8.addCondition(new Condition("destination", "Bordeaux"));
 		rule8.addaction(new Action("taille", "grande"));
 		rules.add(rule8);
 		
 		Rule rule9 = new Rule("9");
-		rule9.addCondition(new Condition("ville","yes"));
 		rule9.addCondition(new Condition("destination", "Paris"));
 		rule9.addaction(new Action("taille", "grande"));
 		rules.add(rule9);
@@ -158,22 +154,27 @@ public class RulesData {
 		//règle sur  les batiments historiques
 		
 		Rule rule15 = new Rule("15");
-		rule15.addCondition(new Condition("ville", "Angers"));
+		rule15.addCondition(new Condition("destination", "Angers"));
 		rule15.addaction(new Action("monument", "chateau d'angers"));
 		rules.add(rule15);
 		
+		Rule rule15_1 = new Rule("15_1");
+		rule15_1.addCondition(new Condition("destination", "Angers"));
+		rule15_1.addaction(new Action("monument", "terrabotanica"));
+		rules.add(rule15_1);
+		
 		Rule rule16 = new Rule("16");
-		rule16.addCondition(new Condition("ville", "Paris"));
+		rule16.addCondition(new Condition("destination", "Paris"));
 		rule16.addaction(new Action("monument", "tour eiffel"));
 		rules.add(rule16);
 		
 		Rule rule17 = new Rule("17");
-		rule17.addCondition(new Condition("ville", "Paris"));
+		rule17.addCondition(new Condition("", "Paris"));
 		rule17.addaction(new Action("monument", "Louvre"));
 		rules.add(rule17);
 		
 		Rule rule18 = new Rule("18");
-		rule18.addCondition(new Condition("ville", "Nantes"));
+		rule18.addCondition(new Condition("destination", "Nantes"));
 		rule18.addaction(new Action("monument", "chateau des ducs de bretagne"));
 		rules.add(rule18);
 		
@@ -194,6 +195,11 @@ public class RulesData {
 		rule20.addaction(new Action("belle ville", "yes"));
 		rules.add(rule20);
 		
+		Rule rule20_1= new Rule("20_1");
+		rule20_1.addCondition(new Condition("monument", "terrabotanica"));
+		rule20_1.addaction(new Action("belle ville", "yes"));
+		rules.add(rule20_1);
+		
 		Rule rule22= new Rule("22");
 		rule22.addCondition(new Condition("batiment historique", "yes"));
 		rule22.addaction(new Action("ville historique", "yes"));
@@ -205,10 +211,6 @@ public class RulesData {
 		
 	}
 	
-	public boolean areThereAnyRule() {
-		
-		return rules.size()==11;
-		
-	}
+	
 
 }

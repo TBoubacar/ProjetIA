@@ -8,7 +8,7 @@ public class Test {
 
 		Decision decision = new Decision();
 		
-		System.out.println("Visitable : " + decision.make_decision("Paris","plus de 1000"));
+		System.out.println("Visitable : " + decision.make_decision("Angers","500-1000"));
 	}
 
 }

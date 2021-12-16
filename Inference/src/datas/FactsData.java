@@ -9,10 +9,12 @@ import facts.Facts;
 public class FactsData {
 	
 	
-	private ArrayList<Facts> arrayfacts = new ArrayList<>();
+	private ArrayList<Facts> arrayfacts;
+	private ArrayList<Facts> faitsFiltrer;
 	
 	public FactsData() {
 		arrayfacts = new ArrayList<>();
+		faitsFiltrer = new ArrayList<>();
 	}
 
 	public  ArrayList<Facts> generateFacts() {
@@ -61,7 +63,12 @@ public class FactsData {
 				trouver2=true;
 			}
 		}
-		return trouver1 == trouver2 && trouver1 == true;
+		if(trouver1 == trouver2 && trouver1 == true) {
+			faitsFiltrer.add(new Facts("destination", ville_saisie));
+			faitsFiltrer.add(new Facts("valeur saisie", budget_saisie));
+			return true;
+		}
+		return false;
 	}
 
 	public ArrayList<Facts> getArrayfacts() {
@@ -74,11 +81,20 @@ public class FactsData {
 	
 	
 	public boolean aDoublon(String a,String b) {
-		for(Facts facts :arrayfacts) {
+		for(Facts facts :faitsFiltrer) {
 			if(facts.getEtiquette().equals(a) && facts.getValeur().equals(b)) {
 				return true;
 			}
 		}
 		return false;
 	}
+
+	public ArrayList<Facts> getFaitsFiltrer() {
+		return faitsFiltrer;
+	}
+
+	public void setFaitsFiltrer(ArrayList<Facts> faitsFiltrer) {
+		this.faitsFiltrer = faitsFiltrer;
+	}
+	
 }
