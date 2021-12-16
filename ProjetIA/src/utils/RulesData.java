@@ -14,6 +14,7 @@ public class RulesData {
 	}
 	
 	public ArrayList<Rule> generateRules() {
+		rules.clear();
 		
 		//condition acceptante
 		Rule rule0 = new Rule("0");

@@ -15,13 +15,15 @@ public class Decision {
 		
 		rulesData =new RulesData();
 		factsData = new FactsData();
-		rulesData.generateRules();
-		factsData.generateFacts();
 	}
 	
 	public boolean make_decision(String destination,String budget) {
 		int mult =0;
 		int cpt=0;
+
+		rulesData.generateRules();
+		factsData.generateFacts();
+		
 		if(factsData.isDataexistsBaseFacts(destination, budget)) {
 			do {
 					mult = factsData.getFaitsFiltrer().size()*rulesData.rules.size();
@@ -63,7 +65,8 @@ public class Decision {
 			while(!factsData.isFactExist("visiter", "yes") && cpt<mult);
 			
 			for(Facts facts:factsData.getFaitsFiltrer()) {
-				System.out.println(facts.getEtiquette()+":"+facts.getValeur());
+				System.out.println(facts.getEtiquette() + " : " + facts.getValeur());
+				Test.getjTextArea().setText(Test.getjTextArea().getText() + "\n \t# " + facts.getEtiquette() + " : " + facts.getValeur());
 			}
 			
 			

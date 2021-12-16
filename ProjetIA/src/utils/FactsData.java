@@ -16,7 +16,8 @@ public class FactsData {
 	}
 
 	public  ArrayList<Facts> generateFacts() {
-	
+		arrayfacts.clear();
+		faitsFiltrer.clear();
 		
 		arrayfacts.add(new Facts("destination", "Angers"));
 		arrayfacts.add(new Facts("destination","Nantes"));
@@ -31,6 +32,46 @@ public class FactsData {
 
 		return this.arrayfacts;
 		
+	}
+	
+	public int getNumberOfCountry() {
+		int nb = 0;
+		for(Facts v : arrayfacts) {
+			if(v.getEtiquette().equals("destination")) {
+				nb++;
+			}
+		} return nb;
+	}
+	
+	public int getNumberOfBudget() {
+		int nb = 0;
+		for(Facts v : arrayfacts) {
+			if(v.getEtiquette().equals("valeur saisie")) {
+				nb++;
+			}
+		} return nb;
+	}
+	
+	public String[] getVilles() {
+		String[] villes = new String[this.getNumberOfCountry()];
+		int i = 0;
+		for(Facts v : arrayfacts) {
+			if(v.getEtiquette().equals("destination")) {
+				villes[i++] = v.getValeur();
+			}
+		}
+		return villes;
+	}
+	
+	public String[] getBudget() {
+		String[] budget = new String[this.getNumberOfBudget()];
+		int i = 0;
+		for(Facts v : arrayfacts) {
+			if(v.getEtiquette().equals("valeur saisie")) {
+				budget[i++] = v.getValeur();
+			}
+		}
+		return budget;
 	}
 	
 	public boolean isFactExist(String etiquette,String valeur) {
